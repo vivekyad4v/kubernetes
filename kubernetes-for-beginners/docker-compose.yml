@@ -1,0 +1,23 @@
+version: '3.2'
+
+services:
+  python:
+    build:
+      context: ./simple-web
+    image: vivekyad4v/local-simple-python
+    restart: always
+    deploy:
+      replicas: 2
+    ports:
+      - 8080
+
+  nginx:
+    build:
+      context: ./nginx
+    image: vivekyad4v/local-nginx-lb
+    restart: always
+    deploy:
+      replicas: 2
+    ports:
+      - "80:80"
+
