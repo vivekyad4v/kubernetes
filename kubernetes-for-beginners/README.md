@@ -1,8 +1,10 @@
 # Kubernetes for beginners
+
 <a href="https://github.com/vivekyad4v?tab=followers"><img align="right" width="200" height="183" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" /></a>
 
 You need to have basic understanding about docker & kubernetes -
-https://en.wikipedia.org/wiki/Kubernetes
+https://en.wikipedia.org/wiki/Kubernetes  
+
 https://en.wikipedia.org/wiki/Docker_(software)
 
 ## Install minikube (Works for Linux & MAC OS) - 
