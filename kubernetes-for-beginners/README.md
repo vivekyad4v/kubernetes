@@ -63,7 +63,7 @@ $ minikube dashboard                 # View minikube dashboard in your browser
 $ minikube service nodexpose --url   # Goto URL, paste this IP:Port in your browser 
 ```
 
-Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx is acting as a LB for python containers.
+Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers.
 
 
 ## Destroy everything -
