@@ -4,7 +4,6 @@
 
 You need to have basic understanding about docker & kubernetes -
 https://en.wikipedia.org/wiki/Kubernetes  
-
 https://en.wikipedia.org/wiki/Docker_(software)
 
 ## Install minikube (Works for Linux & MAC OS) - 
