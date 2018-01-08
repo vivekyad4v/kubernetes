@@ -8,7 +8,7 @@
 https://en.wikipedia.org/wiki/Kubernetes  
 https://en.wikipedia.org/wiki/Docker_(software)
 
-## Install minikube (Works for Linux & MAC OS) - 
+### Install minikube (Works for Linux & MAC OS) - 
 
 ```sh
 $ chmod +x install-minikube.sh
