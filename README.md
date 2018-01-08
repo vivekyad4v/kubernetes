@@ -6,8 +6,8 @@
 
 1. ### [kubernetes-for-beginners](https://github.com/vivekyad4v/kubernetes/tree/master/kubernetes-for-beginners "Heading link")
    * minukube
+   * kubectl
    * docker (engine + compose + swarm)
    * kubernetes
-   * kubectl
   
 
