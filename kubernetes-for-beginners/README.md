@@ -8,21 +8,21 @@
 https://en.wikipedia.org/wiki/Kubernetes  
 https://en.wikipedia.org/wiki/Docker_(software)
 
-### Install minikube (Works for Linux & MAC OS) - 
+### Install minikube (Works for Linux & MAC OS) 
 
 ```sh
 $ chmod +x install-minikube.sh
 $ ./install-minikube.sh
 ```
 
-### Build & push images -
+### Build & push images 
 
 ```sh
 $ docker-compose build
 $ docker-compose push
 ```
 
-### Deploy images to Docker Swarm - 
+### Deploy images to Docker Swarm 
 
 ```sh
 $ docker swarm init
@@ -49,13 +49,13 @@ $ export PASSWD=ab1234                                      # Registry passowrd
 $ export AUTH_TOKEN=$(echo -n "$USERNM:$PASSWD" | base64)   # Your registry auth token
 ```
 
-- Create secret -
+- Create secret 
 
 ```sh
 $ kubectl create secret docker-registry regsecret --docker-server=https://index.docker.io/v1/ --docker-username=$USERNM --docker-password=$PASSWD --docker-email=vivekyad4v@gmail.com
 ```
 
-- Deploy images - 
+- Deploy images 
 
 ```sh
 $ kubectl create -f deployment.yml
@@ -64,14 +64,14 @@ $ kubectrl get all                           # GET everything
 $ eval $(minikube docker-env) && docker ps   # View deployed containers
 ```
 
-- Minikube dashboard - 
+- Minikube dashboard 
 
 ```sh
 $ minikube dashboard                 # View minikube dashboard in your browser
 $ minikube service nodexpose --url   # Goto URL, paste this IP:Port in your browser 
 ```
 
-- Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers. For instance as below -
+- Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers. For instance as below
 
 - One request -
 ![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-1.png)
@@ -79,7 +79,7 @@ $ minikube service nodexpose --url   # Goto URL, paste this IP:Port in your brow
 - Another Request - 
 ![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-2.png)
 
-## Destroy everything -
+## Destroy everything 
 
 ```sh
 $ docker stack rm SIMPLE-WEB
@@ -88,7 +88,7 @@ $ minikube stop
 $ minikube delete
 ```
 
-### Take away -
+### Take away 
 
 - Docker Swarm seems to be less complex than Kubernetes but when it comes to control, coupling & extensibility Kubernetes wins the race by a fair margin.
 
