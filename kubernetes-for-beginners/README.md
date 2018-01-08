@@ -31,7 +31,13 @@ $ docker stack services SIMPLE-WEB
 $ docker ps 
 ```
 
-Goto `http://localhost` to view swarm loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx is acting as a LB for python containers.
+Goto `http://localhost` to view swarm loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx is acting as a LB for python containers. For instance as below -
+
+One request -
+![vivekyad4v-docker-swarm-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/docker-swarm-lb-1.png)
+
+Another Request - 
+![vivekyad4v-docker-swarm-lb-2](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/docker-swarm-lb-2.png)
 
 ### Deploy images to kubernetes 
 
@@ -65,8 +71,13 @@ $ minikube dashboard                 # View minikube dashboard in your browser
 $ minikube service nodexpose --url   # Goto URL, paste this IP:Port in your browser 
 ```
 
-Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers.
+Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers. For instance as below -
 
+One request -
+![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-1.png)
+
+Another Request - 
+![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-2.png)
 
 ## Destroy everything -
 
