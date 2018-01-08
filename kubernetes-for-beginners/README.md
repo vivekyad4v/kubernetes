@@ -4,7 +4,7 @@
 
 <a href="https://github.com/vivekyad4v?tab=followers"><img align="right" width="200" height="183" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" /></a>
 
-You need to have basic understanding about docker & kubernetes -
+- You need to have basic understanding about docker & kubernetes -
 https://en.wikipedia.org/wiki/Kubernetes  
 https://en.wikipedia.org/wiki/Docker_(software)
 
@@ -31,17 +31,17 @@ $ docker stack services SIMPLE-WEB
 $ docker ps 
 ```
 
-Goto `http://localhost` to view swarm loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx is acting as a LB for python containers. For instance as below -
+- Goto `http://localhost` to view swarm loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx is acting as a LB for python containers. For instance as below -
 
-One request -
+- One request -
 ![vivekyad4v-docker-swarm-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/docker-swarm-lb-1.png)
 
-Another Request - 
+- Another Request - 
 ![vivekyad4v-docker-swarm-lb-2](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/docker-swarm-lb-2.png)
 
 ### Deploy images to kubernetes 
 
-We got to provide our registry creds to k8s cluster for a successful image fetch - 
+- We got to provide our registry creds to k8s cluster for a successful image fetch - 
 
 ```sh
 $ export USERNM=vivekyad4v                                  # Registry username
@@ -49,13 +49,13 @@ $ export PASSWD=ab1234                                      # Registry passowrd
 $ export AUTH_TOKEN=$(echo -n "$USERNM:$PASSWD" | base64)   # Your registry auth token
 ```
 
-Create secret -
+- Create secret -
 
 ```sh
 $ kubectl create secret docker-registry regsecret --docker-server=https://index.docker.io/v1/ --docker-username=$USERNM --docker-password=$PASSWD --docker-email=vivekyad4v@gmail.com
 ```
 
-Deploy images - 
+- Deploy images - 
 
 ```sh
 $ kubectl create -f deployment.yml
@@ -64,19 +64,19 @@ $ kubectrl get all                           # GET everything
 $ eval $(minikube docker-env) && docker ps   # View deployed containers
 ```
 
-Minikube dashboard - 
+- Minikube dashboard - 
 
 ```sh
 $ minikube dashboard                 # View minikube dashboard in your browser
 $ minikube service nodexpose --url   # Goto URL, paste this IP:Port in your browser 
 ```
 
-Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers. For instance as below -
+- Goto the `$ minikube service nodexpose --url` URL to view Kubernetes loadbalancing behaviour, you will see it's balancing the load across two Nginx containers & Nginx service is acting as a LB for python containers. For instance as below -
 
-One request -
+- One request -
 ![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-1.png)
 
-Another Request - 
+- Another Request - 
 ![vivekyad4v-kubernetes-lb-1](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-lb-2.png)
 
 ## Destroy everything -
@@ -90,6 +90,6 @@ $ minikube delete
 
 ### Take away -
 
-Docker Swarm seems to be less complex than Kubernetes but when it comes to control, coupling & extensibility Kubernetes wins the race by a fair margin.
+- Docker Swarm seems to be less complex than Kubernetes but when it comes to control, coupling & extensibility Kubernetes wins the race by a fair margin.
 
 
