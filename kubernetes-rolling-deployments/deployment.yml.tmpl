@@ -1,0 +1,152 @@
+---
+ apiVersion: v1
+ kind: Service
+ metadata:
+   name: nodexpose
+   labels:
+     app: local-nginx-lb
+ spec:
+   type: NodePort
+   ports:
+     - port: 80
+       nodePort: 30080
+   selector:
+     app: local-nginx-lb
+
+---
+ apiVersion: v1
+ kind: Service
+ metadata:
+   name: python
+ spec:
+   selector:
+     app: local-simple-python
+   ports:
+     - name: python-app
+       port: 8080
+       targetPort: 8080
+
+---
+ apiVersion: autoscaling/v2beta1
+ kind: HorizontalPodAutoscaler
+ metadata:
+   name: local-simple-python-hpa
+ spec:
+   scaleTargetRef:
+     apiVersion: apps/v1beta1
+     kind: Deployment
+     name: local-simple-python
+   minReplicas: 1
+   maxReplicas: 5
+   metrics:
+     - type: Resource
+       resource:
+         name: cpu
+         targetAverageUtilization: 50
+
+---
+ apiVersion: autoscaling/v2beta1
+ kind: HorizontalPodAutoscaler
+ metadata:
+   name: local-nginx-lb-hpa
+ spec:
+   scaleTargetRef:
+     apiVersion: apps/v1beta1
+     kind: Deployment
+     name: local-nginx-lb
+   minReplicas: 1
+   maxReplicas: 5
+   metrics:
+     - type: Resource
+       resource:
+         name: cpu
+         targetAverageUtilization: 50
+
+---
+ apiVersion: apps/v1beta2
+ kind: Deployment
+ metadata:
+   name: local-simple-python
+ spec:
+   replicas: 2
+   selector:
+     matchLabels:
+       app: local-simple-python
+   template:
+     metadata:
+       labels:
+         app: local-simple-python
+     spec:
+       containers:
+         - name: python
+           image: vivekyad4v/local-simple-python:${VERSION}
+           imagePullPolicy: Always
+           readinessProbe:
+             httpGet:
+               path: /
+               port: 8080
+             initialDelaySeconds: 10
+             periodSeconds: 20
+           livenessProbe:
+             httpGet:
+               path: /
+               port: 8080
+             initialDelaySeconds: 15
+             periodSeconds: 20
+           env:
+             - name: DEPLOY_IT_ALWAYS    
+               value: 'DEPLOYMENT_DATE'
+           ports:
+             - containerPort: 8080
+           resources:
+             limits:
+               cpu: "1"
+             requests:
+               cpu: "0.5"
+       imagePullSecrets:
+         - name: regsecret
+
+---
+ apiVersion: apps/v1beta2
+ kind: Deployment
+ metadata:
+   name: local-nginx-lb
+ spec:
+   replicas: 2
+   selector:
+     matchLabels:
+       app: local-nginx-lb
+   template:
+     metadata:
+       labels:
+         app: local-nginx-lb
+     spec:
+       containers:
+         - name: nginx
+           image: vivekyad4v/local-nginx-lb:${VERSION}
+           imagePullPolicy: Always
+           readinessProbe:
+             httpGet:
+               path: /
+               port: 80
+             initialDelaySeconds: 10
+             periodSeconds: 20
+           livenessProbe:
+             httpGet:
+               path: /
+               port: 80
+             initialDelaySeconds: 15
+             periodSeconds: 20
+           env:
+             - name: DEPLOY_IT_ALWAYS
+               value: 'DEPLOYMENT_DATE'
+           ports:
+             - containerPort: 80
+           resources:
+             limits:
+               cpu: "1"
+             requests:
+               cpu: "0.5"
+       imagePullSecrets:
+         - name: regsecret
+
