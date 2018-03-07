@@ -3,6 +3,12 @@
 ##### Tech Stack
 - Docker(engine, compose & swarm), Minikube, Kubernetes
 
+##### Screenshots
+![alt tag](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/minikube-heapster-kubernetes-hpa.png "Minikube Heapster k8s")
+![alt tag](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/heapster.png "Heapster")
+![alt tag](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/kubernetes-hpa-load-test.png "K8s HPA load test")
+
+
 ### Install minikube (Works for Linux & MAC OS) - 
 ```sh
 $ chmod +x install-minikube.sh
