@@ -1,7 +1,7 @@
 # Kubernetes Continuous | rolling deployments 
 - (Rolling Deployment + HealthChecks + Scaling + AutoScaling)
 ##### Tech Stack
-- Docker(engine, compose & swarm), Minikube, Kubernetes
+- Docker(engine, compose), Minikube, Kubernetes
 
 ##### Screenshots
 ![alt tag](https://github.com/vivekyad4v/public-images/raw/master/kubernetes/minikube-heapster-kubernetes-hpa.png "Minikube Heapster k8s")
