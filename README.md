@@ -10,7 +10,7 @@
    * docker (engine + compose + swarm)
    * kubernetes
   
-2. ### [Kubernetes Continuous | rolling deployments](https://github.com/vivekyad4v/kubernetes/tree/master/kubernetes-for-beginners "Heading link")
+2. ### [Kubernetes Continuous | rolling deployments](https://github.com/vivekyad4v/kubernetes/tree/master/kubernetes-rolling-deployments "Heading link")
    * minukube
    * kubectl
    * docker (engine + compose)
